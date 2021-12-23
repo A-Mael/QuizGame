@@ -1,0 +1,29 @@
+#!/bin/sh
+# this script check answer of 10 true or false questions 
+file="quiz.txt"
+quizAnswer=("true" "false" "true" "true" "false" "false" "false" "true" "false" "false")
+VarCount=0
+i=1
+while [ $i -lt 10 ]
+do
+  # display $line 
+	sed -n $i'p' "$file"
+ 	read -p "true or false: " input
+	if [[ $input -ne "true" ]] && [[ $input -ne "false" ]]
+		then
+			echo "Please choose between true or false"
+  else     		
+  	if [ "$input" = ${quizAnswer[$i-1]} ]
+  		then
+  			echo "correct"
+  			((VarCount++))
+  	else
+  		echo "Sorry the correct answer is ${quizAnswer[$i-1]}"
+  	fi
+    ((i++))
+  fi
+
+
+done 
+
+echo "Your score is $VarCount /10"
