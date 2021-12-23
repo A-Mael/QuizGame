@@ -22,8 +22,5 @@ do
   	fi
     ((i++))
   fi
-
-
 done 
-
 echo "Your score is $VarCount /10"
